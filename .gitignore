@@ -1,0 +1,8 @@
+*.exe
+*.o
+*.dsym
+main
+game
+.vs/
+.vscode/
+*.dll
