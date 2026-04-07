@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s \"https://www.raylib.com/examples/core/loader.html?name=core_input_gamepad\")",
+      "Bash(C:/raylib/w64devkit/bin/g++ src/main.cpp -o game.exe -Wall -std=c++14 -I. -IC:/raylib/raylib/src -IC:/raylib/raylib/src/external -LC:/raylib/raylib/src -lraylib -lopengl32 -lgdi32 -lwinmm -DPLATFORM_DESKTOP)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(rm -rf \"/c/raylib/raylib/src/external/SDL2\")",
+      "Bash(mkdir -p \"/c/raylib/raylib/src/external/SDL2\")",
+      "Bash(cp -r \"/c/raylib/SDL2/x86_64-w64-mingw32/include/SDL2/\" \"/c/raylib/raylib/src/external/SDL2/\")",
+      "Bash(mkdir -p \"/c/raylib/raylib/src/external/SDL2/lib\")",
+      "Bash(cp \"/c/raylib/SDL2/x86_64-w64-mingw32/lib/libSDL2.a\" \"/c/raylib/raylib/src/external/SDL2/lib/\")",
+      "Bash(mkdir -p \"/c/raylib/raylib/src/external/SDL2/include\")",
+      "Bash(cp \"/c/raylib/SDL2/x86_64-w64-mingw32/include/SDL2/\"*.h \"/c/raylib/raylib/src/external/SDL2/include/\")",
+      "Bash(mkdir \"/c/raylib/raylib/src/external/SDL2/lib\")",
+      "Bash(cp \"/c/raylib/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a\" \"/c/raylib/raylib/src/external/SDL2/lib/\")",
+      "Read(//c/raylib/raylib/src/**)",
+      "Bash(PATH=\"/c/raylib/w64devkit/bin:$PATH\" ls libraylib.a ../src/libraylib_desktop.a)",
+      "Bash(cd:*)",
+      "Bash(PATH=\"/c/raylib/w64devkit/bin:$PATH\" mingw32-make -f Makefile PLATFORM=PLATFORM_WEB EMSDK_PATH=C:/raylib/emsdk EMSCRIPTEN=C:/raylib/emsdk/upstream/emscripten EMCC=C:/raylib/emsdk/upstream/emscripten/emcc.bat PYTHON_PATH=C:/Users/gui_g/AppData/Local/Python/pythoncore-3.14-64 OBJS=)"
+    ]
+  },
+  "terminal.integrated.env.windows": {
+    "PATH": "C:\\raylib\\w64devkit\\bin;${env:PATH}"
+  }
+}
