@@ -3,6 +3,7 @@
 *.dsym
 main
 game
+.claude/
 .vs/
 .vscode/
 *.dll
