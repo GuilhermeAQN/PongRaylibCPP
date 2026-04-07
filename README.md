@@ -27,24 +27,88 @@ This project was initially built by following the tutorial below, then expanded 
 
 ## 🚀 How to Run
 
-### Requirements
-- [w64devkit](https://github.com/skeeto/w64devkit) (GCC for Windows) or any MinGW toolchain
-- `mingw32-make` available in your PATH
+### ⚙️ Setup
 
-### Steps
-1. Clone the repository:
-   ```bash
-   git clone --recursive --depth=1 https://github.com/GuilhermeAQN/PongRaylibCPP.git
-   cd PongRaylibCPP
+Clone the repository **recursively** to pull raylib and SDL2 from submodules:
 
-2. Compile Raylib with SDL2 support:
-cd third_party/raylib/src
-mingw32-make clean
-mingw32-make PLATFORM=PLATFORM_DESKTOP_SDL
-cd ../../..
-3. Build and run the game:
+```bash
+git clone --recursive --depth=1 https://github.com/GuilhermeAQN/PongRaylibCPP.git
+cd PongRaylibCPP
+```
+
+> Already cloned without `--recursive`? Run:
+> ```bash
+> git submodule update --init --recursive
+> ```
+
+---
+
+### 📦 Requirements
+
+| Tool | Purpose | Required? |
+|---|---|---|
+| `g++` (MinGW or w64devkit) | C++ compiler | ✅ Yes |
+| `mingw32-make` | Build system | ✅ Yes (comes with w64devkit) |
+
+**Don't have these?**
+- Download [w64devkit](https://github.com/skeeto/w64devkit) — extract anywhere and add `w64devkit/bin` to your PATH.
+- Or use any MinGW distribution (MSYS2, TDM-GCC, etc.) — as long as `g++` and `mingw32-make` work in your terminal.
+
+> **Note:** All libraries (compiled Raylib and SDL2) are already included in `third_party/`. You do **not** need to install or compile them separately — unless you want to rebuild Raylib for a different platform.
+
+---
+
+### ▶️ Desktop Build
+
+```bash
 make
 .\game.exe
+```
+
+---
+
+### 🔧 Makefile Options
+
+| Variable | Default | Description |
+|---|---|---|
+| `COMPILER_PATH` | `C:/raylib/w64devkit/bin` | Path to `g++` and tools (`?=`, can be overridden) |
+| `RAYLIB_PATH` | `third_party/raylib` | Path to raylib source and libs |
+| `PLATFORM` | `PLATFORM_DESKTOP` | Target platform |
+| `BUILD_MODE` | `RELEASE` | `DEBUG` or `RELEASE` |
+
+**Override example:**
+
+```bash
+make COMPILER_PATH=C:/my/path/w64devkit/bin
+make BUILD_MODE=DEBUG
+```
+
+**Targets:**
+
+| Command | What it does |
+|---|---|
+| `make` | Build desktop |
+| `make clean` | Remove compiled files |
+| `make web` | Build for web (requires Emscripten SDK) |
+
+---
+
+### 🌐 Web Build *(optional)*
+
+> ⚠️ Requires the [Emscripten SDK](https://emscripten.org/docs/getting_started/downloads.html) configured on your machine. Skip this section if you don't have it.
+
+```bash
+make web
+```
+
+Then open the result in a browser:
+
+```bash
+# Serve locally
+python -m http.server 8000 --directory build/web
+```
+
+Or open `build/web/index.html` directly in your browser.
 
 ---
 
