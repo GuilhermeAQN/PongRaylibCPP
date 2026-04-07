@@ -6,3 +6,4 @@ game
 .vs/
 .vscode/
 *.dll
+build/
